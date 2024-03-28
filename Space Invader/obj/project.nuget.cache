@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ic5UJeMvFSwK9Tk7fPtLW//IdfA8/7KCEHjA3nFk7FvRWXUTm+fW0K+Kh3CfvCOqOsvYRcmlA7sp7Bxe9ZbUYQ==",
+  "success": true,
+  "projectFilePath": "/Users/pavelpavlovic/Desktop/C#/Space Invader/Space Invader/Space Invader.csproj",
+  "expectedPackageFiles": [
+    "/Users/pavelpavlovic/.nuget/packages/csfml/2.5.0/csfml.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/sfml.audio/2.5.0/sfml.audio.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/sfml.graphics/2.5.0/sfml.graphics.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/sfml.net/2.5.0/sfml.net.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/sfml.system/2.5.0/sfml.system.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/sfml.window/2.5.0/sfml.window.2.5.0.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/microsoft.netcore.app.ref/6.0.12/microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.12/microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512",
+    "/Users/pavelpavlovic/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.12/microsoft.netcore.app.host.osx-x64.6.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
