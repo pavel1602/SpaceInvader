@@ -12,6 +12,8 @@ namespace Space_Invaders
         private readonly EnemyManager _enemyManager;
         private readonly CollisionHandler _collisionHandler;
         private readonly AnimationManager _animationManager;
+        private readonly ScoreManager _scoreManager;
+        private readonly Vector2f _screenSize;
         public Game(GameConfiguration gameConfiguration)
         {
             var mode = new VideoMode((uint) gameConfiguration.Width, (uint) gameConfiguration.Height);
@@ -23,10 +25,13 @@ namespace Space_Invaders
             _background = new Sprite(TextureManager.BackgroundTexture);
 
             _player = CreatePlayer(gameConfiguration);
-            var screenSize = new Vector2f(gameConfiguration.Width, gameConfiguration.Height);
+            _screenSize = new Vector2f(gameConfiguration.Width, gameConfiguration.Height);
             _animationManager = new AnimationManager();
-            _enemyManager = new EnemyManager(gameConfiguration.EnemySpawnCooldown, gameConfiguration.EnemySpeed, screenSize, _animationManager);
-            _collisionHandler = new CollisionHandler(_player, _enemyManager);
+            _enemyManager = new EnemyManager(gameConfiguration.EnemySpawnCooldown, gameConfiguration.EnemySpeed, _screenSize, _animationManager);
+            
+            _scoreManager = new ScoreManager(gameConfiguration.ScoreManagerSettings);
+            
+            _collisionHandler = new CollisionHandler(_player, _enemyManager, _scoreManager);
         }
         private Player CreatePlayer(GameConfiguration gameConfiguration)
         {
@@ -60,6 +65,7 @@ namespace Space_Invaders
             {
                 HandleEvents();
                 _window.Clear(Color.Black);
+                ShowGameOverText();
                 _window.Display();
             }
         }
@@ -80,8 +86,15 @@ namespace Space_Invaders
             _player.Draw(_window); 
             _enemyManager.Draw(_window);
             _animationManager.Draw(_window);
+            _scoreManager.Draw(_window);
             
             _window.Display();
+        }
+        private void ShowGameOverText()
+        {
+            var textPosition = _screenSize / 2;
+            var gameOverText = new TextLabel("Game\nOver", "FreeMonospacedBold", 80, Color.White, textPosition);
+            gameOverText.Draw(_window);
         }
     }
 }

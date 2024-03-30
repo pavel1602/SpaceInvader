@@ -13,6 +13,7 @@ namespace Space_Invaders
         public float BulletRadius { get; init; }
         public float EnemySpeed { get; init; }
         public float EnemySpawnCooldown { get; init; }
+        public ScoreManagerSettings ScoreManagerSettings { get; init; } 
         public GameConfiguration(string jsonPath)
         {
             string jsonString = File.ReadAllText(jsonPath);

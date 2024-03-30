@@ -2,15 +2,16 @@ namespace Space_Invaders
 {
     public class CollisionHandler
     {
-        private Player _player;
-        private EnemyManager _enemyManager;
+        private readonly Player _player;
+        private readonly EnemyManager _enemyManager;
+        private readonly ScoreManager _scoreManager;
 
-        public CollisionHandler(Player player, EnemyManager enemyManager)
+        public CollisionHandler(Player player, EnemyManager enemyManager, ScoreManager scoreManager)
         {
             _player = player;
             _enemyManager = enemyManager;
+            _scoreManager = scoreManager;
         }
-
         public void Update()
         {
             HandleEnemiesCollision();
@@ -30,7 +31,6 @@ namespace Space_Invaders
             bullet = null;
             return false;
         }
-
         private bool HasCollisionEnemyWithPlayer(Enemy enemy)
         {
             return _player.GetGlobalBounds().Intersects(enemy.GetGlobalBounds());
@@ -44,6 +44,7 @@ namespace Space_Invaders
                 {
                     _player.DestroyBullet(bullet);
                     _enemyManager.DestroyEnemy(enemies[i]);
+                    _scoreManager.IncreaseScore();
                     i--;
                     continue;
                 }

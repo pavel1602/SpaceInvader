@@ -5,7 +5,7 @@ namespace Space_Invaders
     public class TextureManager
     {
         private const string ASSETS_PATH = "/Users/pavelpavlovic/Desktop/C#/Space Invader/Space Invader/Assets";
-        private const string BACKGROUND_TEXTURE_PATH = "/Backgrounds/purpleBG.png";
+        private const string BACKGROUND_TEXTURE_PATH = "/Backgrounds/blueBG.png";
         private const string PLAYER_TEXTURE_PATH = "/Ships/playerShip1_red.png";
         private const string ENEMY_TEXTURE_PATH = "/Enemies/enemyBlack5.png";
 
