@@ -27,5 +27,10 @@ namespace Space_Invaders
                 animation.Draw(window);
             }
         }
+
+        public void AddAnimation(SpriteAnimation spriteAnimation)
+        {
+            _animations.Add(spriteAnimation);
+        }
     }
 }

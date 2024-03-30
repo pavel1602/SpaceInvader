@@ -11,8 +11,7 @@ namespace Space_Invaders
         private readonly Player _player;
         private readonly EnemyManager _enemyManager;
         private readonly CollisionHandler _collisionHandler;
-        private readonly SpriteAnimation _animation;
-
+        private readonly AnimationManager _animationManager;
         public Game(GameConfiguration gameConfiguration)
         {
             var mode = new VideoMode((uint) gameConfiguration.Width, (uint) gameConfiguration.Height);
@@ -25,10 +24,9 @@ namespace Space_Invaders
 
             _player = CreatePlayer(gameConfiguration);
             var screenSize = new Vector2f(gameConfiguration.Width, gameConfiguration.Height);
-            _enemyManager = new EnemyManager(gameConfiguration.EnemySpawnCooldown, gameConfiguration.EnemySpeed, screenSize);
+            _animationManager = new AnimationManager();
+            _enemyManager = new EnemyManager(gameConfiguration.EnemySpawnCooldown, gameConfiguration.EnemySpeed, screenSize, _animationManager);
             _collisionHandler = new CollisionHandler(_player, _enemyManager);
-            var position = new Vector2f(10,10);
-            _animation = new SpriteAnimation(position, TextureManager.ExplosionAtlas, 0.2f);
         }
         private Player CreatePlayer(GameConfiguration gameConfiguration)
         {
@@ -71,19 +69,17 @@ namespace Space_Invaders
         }
         private void Update()
         {
-            _animation.Update();
             _player.Update();
             _enemyManager.Update();
             _collisionHandler.Update();
-            
+            _animationManager.Update();
         }
         private void Draw()
         {
             _window.Draw(_background);
-            _animation.Draw(_window);
-            _player.Draw(_window);
+            _player.Draw(_window); 
             _enemyManager.Draw(_window);
-            
+            _animationManager.Draw(_window);
             
             _window.Display();
         }

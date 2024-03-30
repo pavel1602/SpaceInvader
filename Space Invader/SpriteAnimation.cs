@@ -25,7 +25,7 @@ namespace Space_Invaders
         {
             if (_currentAnimationTime < _animationTime)
             {
-                _currentAnimationTime -= _frameDeltaTime;
+                _currentAnimationTime += _frameDeltaTime;
                 return;
             }
 

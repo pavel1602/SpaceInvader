@@ -7,10 +7,13 @@ namespace Space_Invaders
     {
         private readonly float _enemySpeed; 
         private readonly Sprite _sprite;
+        private readonly AnimationManager _animationManager;
+        private const float DEATH_ANIMATION_TIME= 0.2f;
 
-        public Enemy(float enemySpeed, Texture texture, Vector2f spawnPosition)
+        public Enemy(float enemySpeed, Texture texture, Vector2f spawnPosition, AnimationManager animationManager)
         {
             _enemySpeed = enemySpeed;
+            _animationManager = animationManager;
             _sprite = new Sprite(texture);
             _sprite.Position = spawnPosition;
         }
@@ -25,6 +28,13 @@ namespace Space_Invaders
         public FloatRect GetGlobalBounds()
         {
             return _sprite.GetGlobalBounds();
+        }
+        public void PlayDeathAnimation()
+        {
+            var halfSpriteSize = (Vector2f) _sprite.Texture.Size / 2;
+            var animationPosition = _sprite.Position - halfSpriteSize;
+            var explosionAnimation = new SpriteAnimation(animationPosition, TextureManager.ExplosionAtlas, DEATH_ANIMATION_TIME);
+            _animationManager.AddAnimation(explosionAnimation);
         }
         private void Move()
         {
